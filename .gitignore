@@ -1,0 +1,23 @@
+# Gradle
+.gradle/
+build/
+*/build/
+
+# Android / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+
+# SO
+.DS_Store
+Thumbs.db
+
+# Logs y crash dumps
+*.log
+core.*
+hs_err_pid*
