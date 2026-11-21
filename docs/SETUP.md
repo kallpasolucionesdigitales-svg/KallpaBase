@@ -1,6 +1,6 @@
 # Setup de KallpaBase para desarrollo Android
 
-> Estado: **EN CURSO** · Última actualización: 2026-11-21
+> Estado: **COMPLETADO** · Última actualización: 2026-11-21
 
 ## Entorno detectado
 
@@ -35,7 +35,7 @@
 - [x] **Paso 4** — `.gitignore` de Android, `local.properties` ignorado, firma release fuera del repo.
 - [x] **Paso 5** — Crear AVD (API 37, Google APIs, x86_64) y verificar `adb devices`.
 - [x] **Paso 6** — Primer `./gradlew assembleDebug` + `./gradlew test` y documentar resultados.
-- [ ] **Paso 7** (opcional) — CI (GitHub Actions), ktlint/detekt, version catalog y Dependabot.
+- [x] **Paso 7** (opcional) — CI (GitHub Actions), ktlint/detekt, version catalog y Dependabot.
 
 ## Registro de progreso
 
@@ -66,6 +66,11 @@
 - Tests agregados: `ExampleUnitTest` (JUnit 4) y `GreetingTest` (Compose UI, API v2 de `createComposeRule`).
 - `./gradlew test` → **BUILD SUCCESSFUL**; `./gradlew connectedAndroidTest` → **BUILD SUCCESSFUL** en `KallpaBase_API37 (AVD) - 17`.
 - Nota: `ui-test-junit4` y `ui-test-manifest` no son versionados por el BOM 2026.11.01; se fijaron a `1.13.0` en el catálogo.
+- **Paso 7 completado:** ktlint `14.2.0` + detekt `2.0.0-alpha.6` (la rama 1.x no corre con el JBR 25 local: falla con `--jvm-target 25`; la 2.x usa Kotlin 2.x y funciona). Config en `.editorconfig` y `config/detekt/detekt.yml`; ambos enganchados a `check`.
+- CI en `.github/workflows/android.yml`: job `build` (JDK 21 + setup-android + caché Gradle + `ktlintCheck detekt lint test assembleDebug` + artefactos) y job `instrumented-test` (emulador API 37 / `google_apis` / `pixel_9` + `connectedAndroidTest`).
+- Dependabot en `.github/dependabot.yml`: semanal para `gradle` y `github-actions`.
+- Verificación local: `./gradlew --no-daemon ktlintCheck detekt lint test assembleDebug` → **BUILD SUCCESSFUL** (2m 32s). YAML validado con PyYAML.
+- Commit de cierre del Paso 7: `chore: add CI, linting and dependabot`.
 
 ## Comandos de referencia (Paso 1)
 

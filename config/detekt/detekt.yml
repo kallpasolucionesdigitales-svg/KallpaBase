@@ -1,0 +1,19 @@
+# Configuración de detekt para KallpaBase (detekt 2.x).
+# Se complementa con los defaults (buildUponDefaultConfig = true).
+config:
+  validation: true
+  warningsAsErrors: false
+
+complexity:
+  LongParameterList:
+    active: false # Compose usa muchos parámetros (Modifier, lambdas, etc.).
+  LongMethod:
+    active: false # Las funciones @Composable suelen ser largas por declarativa.
+
+naming:
+  FunctionNaming:
+    active: false # Los tests usan nombres con guiones bajos (addition_isCorrect).
+
+style:
+  MagicNumber:
+    active: false
