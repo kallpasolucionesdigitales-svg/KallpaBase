@@ -72,6 +72,7 @@
 - Verificación local: `./gradlew --no-daemon ktlintCheck detekt lint test assembleDebug` → **BUILD SUCCESSFUL** (2m 32s). YAML validado con PyYAML.
 - Commit de cierre del Paso 7: `chore: add CI, linting and dependabot`.
 - Fix de CI (2026-11-22): `setup-android` `@v3` → `@v4` (v3 instala el paquete `tools`, eliminado por Google → `sdkmanager` exit 1). Además `api-level: '37.0'` porque el SDK usa `android-37.0` como identificador, no `android-37`.
+- Fix de CI (2026-11-22, parte 2): los runs #9 y #10 pasaron el job estático pero fallaron en `Tests instrumentados (API 37)` con `Timeout waiting for emulator to boot`. Agregado paso de **KVM** (udev rules, requerido por `android-emulator-runner` en Linux) y `emulator-boot-timeout: 1200`.
 
 ## Comandos de referencia (Paso 1)
 
