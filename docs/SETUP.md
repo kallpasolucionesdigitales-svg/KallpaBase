@@ -73,14 +73,14 @@
 - Commit de cierre del Paso 7: `chore: add CI, linting and dependabot`.
 - Fix de CI (2026-11-22): `setup-android` `@v3` → `@v4` (v3 instala el paquete `tools`, eliminado por Google → `sdkmanager` exit 1). Además `api-level: '37.0'` porque el SDK usa `android-37.0` como identificador, no `android-37`.
 - Fix de CI (2026-11-22, parte 2): los runs #9 y #10 pasaron el job estático pero fallaron en `Tests instrumentados (API 37)` con `Timeout waiting for emulator to boot`. Agregado paso de **KVM** (udev rules, requerido por `android-emulator-runner` en Linux) y `emulator-boot-timeout: 1200`.
-- **CI verde:** run `#11` (commit `2c8a6ba`) → **Success** en 4m 57s. `Build y checks estáticos` ✅ 1m 22s · `Tests instrumentados (API 37)` ✅ 3m 31s. Artefactos: APK debug (11.9 MB) y reportes.
+- **CI verde:** run `#11` (commit `2c8a6ba`) → **Success** en 4m 57s; run `#13` (`ebddaee`, tras los bumps de acciones) → **Success**.
 - **Dependabot (2026-11-22):** mergeados PRs **#1–#4** (`setup-java@v6`, `upload-artifact@v7`, `checkout@v7`, `cache@v6`), con lo que desaparecen los warnings de Node 20 / acciones deprecadas. PR **#5** (`setup-android` 3→4) ya estaba cerrado por redundante (`d4a591b`). YAML validado.
+- **Dependabot (2026-11-22, parte 2):** mergeados PRs **#6** (AGP `9.5.0`→`9.5.2`) y **#7** (Gradle wrapper `9.6.0`→`9.9.1`). Verificación local en worktree temporal: `ktlintCheck detekt lint test assembleDebug assembleRelease` → **BUILD SUCCESSFUL** (5m 34s) y `connectedAndroidTest` → **BUILD SUCCESSFUL** (1m 25s, API 37 / JBR 25). Gradle 9.9.1 corrige 3 advisories (1 critical, 2 high). Los fallos previos de CI en #6/#7 se debían al workflow anterior (`setup-android@v3`), ya corregido en `main`.
 
-## Próximos pasos (Dependabot / cierre)
+## Próximos pasos (cierre)
 
-1. Verificar el run de CI posterior a los merges de #1–#4.
-2. PR **#6** (AGP 9.5.0→9.5.2) y **#7** (Gradle wrapper 9.6.0→9.9.1): diffs revisados; compatibilidad OK (AGP 9.5 admite Gradle ≥ 9.6.0 y 9.9.1 incluye parches de seguridad). Pendiente de verificación local antes de mergear.
-3. Opcional: abrir el repo en Android Studio (*File > Open* → raíz → Gradle Sync) y crear rama de trabajo `feature/<nombre>`.
+1. Verificar el run final de CI en `main` tras los merges de #6 y #7.
+2. Opcional: abrir el repo en Android Studio (*File > Open* → raíz → Gradle Sync) y crear rama de trabajo `feature/<nombre>`.
 
 ## Comandos de referencia (Paso 1)
 
