@@ -73,13 +73,13 @@
 - Commit de cierre del Paso 7: `chore: add CI, linting and dependabot`.
 - Fix de CI (2026-11-22): `setup-android` `@v3` → `@v4` (v3 instala el paquete `tools`, eliminado por Google → `sdkmanager` exit 1). Además `api-level: '37.0'` porque el SDK usa `android-37.0` como identificador, no `android-37`.
 - Fix de CI (2026-11-22, parte 2): los runs #9 y #10 pasaron el job estático pero fallaron en `Tests instrumentados (API 37)` con `Timeout waiting for emulator to boot`. Agregado paso de **KVM** (udev rules, requerido por `android-emulator-runner` en Linux) y `emulator-boot-timeout: 1200`.
-- **CI verde:** run `#11` (commit `2c8a6ba`) → **Success** en 4m 57s; run `#13` (`ebddaee`, tras los bumps de acciones) → **Success**.
+- **CI verde:** run `#11` (commit `2c8a6ba`) → **Success** en 4m 57s; run `#13` (`ebddaee`, tras los bumps de acciones) → **Success**; run `#14` (`58088bb`, estado final con AGP 9.5.2 + Gradle 9.9.1) → **Success** en 6m 19s (estático 2m 7s · instrumentados 4m 7s), artefactos `app-debug` 11.9 MB y `reports` 137 KB, sin warnings.
 - **Dependabot (2026-11-22):** mergeados PRs **#1–#4** (`setup-java@v6`, `upload-artifact@v7`, `checkout@v7`, `cache@v6`), con lo que desaparecen los warnings de Node 20 / acciones deprecadas. PR **#5** (`setup-android` 3→4) ya estaba cerrado por redundante (`d4a591b`). YAML validado.
 - **Dependabot (2026-11-22, parte 2):** mergeados PRs **#6** (AGP `9.5.0`→`9.5.2`) y **#7** (Gradle wrapper `9.6.0`→`9.9.1`). Verificación local en worktree temporal: `ktlintCheck detekt lint test assembleDebug assembleRelease` → **BUILD SUCCESSFUL** (5m 34s) y `connectedAndroidTest` → **BUILD SUCCESSFUL** (1m 25s, API 37 / JBR 25). Gradle 9.9.1 corrige 3 advisories (1 critical, 2 high). Los fallos previos de CI en #6/#7 se debían al workflow anterior (`setup-android@v3`), ya corregido en `main`.
 
 ## Próximos pasos (cierre)
 
-1. Verificar el run final de CI en `main` tras los merges de #6 y #7.
+1. Crear el label `dependencies` (color `#1d76db`) en GitHub: Dependabot avisa que no existe. No se pudo crear desde este entorno por límite de la API sin autenticar; hacerlo en https://github.com/kallpasolucionesdigitales-svg/KallpaBase/labels/new.
 2. Opcional: abrir el repo en Android Studio (*File > Open* → raíz → Gradle Sync) y crear rama de trabajo `feature/<nombre>`.
 
 ## Comandos de referencia (Paso 1)
