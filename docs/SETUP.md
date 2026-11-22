@@ -73,14 +73,14 @@
 - Commit de cierre del Paso 7: `chore: add CI, linting and dependabot`.
 - Fix de CI (2026-11-22): `setup-android` `@v3` → `@v4` (v3 instala el paquete `tools`, eliminado por Google → `sdkmanager` exit 1). Además `api-level: '37.0'` porque el SDK usa `android-37.0` como identificador, no `android-37`.
 - Fix de CI (2026-11-22, parte 2): los runs #9 y #10 pasaron el job estático pero fallaron en `Tests instrumentados (API 37)` con `Timeout waiting for emulator to boot`. Agregado paso de **KVM** (udev rules, requerido por `android-emulator-runner` en Linux) y `emulator-boot-timeout: 1200`.
-- **CI verde:** run `#11` (commit `2c8a6ba`) → **Success** en 4m 57s. `Build y checks estáticos` ✅ 1m 22s · `Tests instrumentados (API 37)` ✅ 3m 31s. Artefactos: APK debug (11.9 MB) y reportes. Quedan 4 warnings no bloqueantes (Node 20 deprecated en acciones v4 y `setup-java v4` deprecated).
+- **CI verde:** run `#11` (commit `2c8a6ba`) → **Success** en 4m 57s. `Build y checks estáticos` ✅ 1m 22s · `Tests instrumentados (API 37)` ✅ 3m 31s. Artefactos: APK debug (11.9 MB) y reportes.
+- **Dependabot (2026-11-22):** mergeados PRs **#1–#4** (`setup-java@v6`, `upload-artifact@v7`, `checkout@v7`, `cache@v6`), con lo que desaparecen los warnings de Node 20 / acciones deprecadas. PR **#5** (`setup-android` 3→4) ya estaba cerrado por redundante (`d4a591b`). YAML validado.
 
 ## Próximos pasos (Dependabot / cierre)
 
-1. Mergear PRs **#1** (`setup-java` 4→6), **#2** (`upload-artifact` 4→7), **#3** (`checkout` 4→7) y **#4** (`cache` 4→6). Esto además elimina los warnings de Node 20 / acciones deprecadas.
-2. Cerrar PR **#5** (`setup-android` 3→4): ya quedó resuelto en `d4a591b`.
-3. Revisar antes de mergear PR **#6** (AGP 9.5.0→9.5.2) y **#7** (Gradle wrapper 9.6.0→9.9.1) por compatibilidad.
-4. Opcional: abrir el repo en Android Studio (*File > Open* → raíz → Gradle Sync) y crear rama de trabajo `feature/<nombre>`.
+1. Verificar el run de CI posterior a los merges de #1–#4.
+2. PR **#6** (AGP 9.5.0→9.5.2) y **#7** (Gradle wrapper 9.6.0→9.9.1): diffs revisados; compatibilidad OK (AGP 9.5 admite Gradle ≥ 9.6.0 y 9.9.1 incluye parches de seguridad). Pendiente de verificación local antes de mergear.
+3. Opcional: abrir el repo en Android Studio (*File > Open* → raíz → Gradle Sync) y crear rama de trabajo `feature/<nombre>`.
 
 ## Comandos de referencia (Paso 1)
 
