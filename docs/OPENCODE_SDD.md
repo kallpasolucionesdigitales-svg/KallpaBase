@@ -1,6 +1,6 @@
 # Configuración de OpenCode y Spec-Driven Development en KallpaBase
 
-> Estado: **EN CURSO** · Rama: `chore/opencode-sdd-setup` · Base: `main` @ `ef51043` · Última actualización: 2026-11-24 22:56 -03
+> Estado: **EN CURSO** · Rama: `feature/001-contador-compose` (config commiteada en `794bb5f`) · Última actualización: 2026-11-24 23:07 -03
 
 ## Objetivo
 
@@ -60,7 +60,7 @@ Ciclo de trabajo: **`/spec.new` → `/spec.plan` → `/spec.tasks` → `/spec.im
 - [x] **Paso 7** — Crear skill `spec-driven` con plantillas y guía de verificación Android.
 - [x] **Paso 8** — Crear `docs/specs/README.md` (índice y regla `NNN-slug`).
 - [x] **Paso 9** — Verificar descubrimiento de agentes/comandos en TUI; confirmado por el usuario.
-- [ ] **Paso 10** — Feature piloto `feature/001-<nombre>`: spec → plan → tareas → implementación → verificación → revisión.
+- [x] **Paso 10** — Feature piloto `001-contador-compose`: spec → plan → tareas → implementación → verificación PASS → revisión sin bloqueantes; specs en estado `verificado`.
 - [ ] **Paso 11** — Validar localmente y exigir CI verde en el PR.
 - [ ] **Paso 12** — Push de la rama y PR (aún no ejecutado).
 
@@ -76,13 +76,15 @@ Ciclo de trabajo: **`/spec.new` → `/spec.plan` → `/spec.tasks` → `/spec.im
 6. Registro de progreso escrito en este archivo (`docs/OPENCODE_SDD.md`).
 7. Pasos 4–8 aplicados: creados `AGENTS.md`, `opencode.jsonc`, los seis comandos, la skill `spec-driven` (con `spec-template.md` y `android-verification.md`) y `docs/specs/README.md`. `opencode.jsonc` validado con `python3 -m json.tool`; corregidas tres erratas en los comandos. OpenCode cargó `AGENTS.md` y descubrió la skill automáticamente.
 8. Paso 9 confirmado por el usuario: los tres agentes propios y los seis comandos `/spec.*` aparecen en la TUI. No hizo falta `/reload`.
+9. Configuración commiteada como `794bb5f` (`chore: add opencode agents and spec-driven workflow`). Creada la rama `feature/001-contador-compose` y generados `spec.md`, `plan.md`, `tasks.md` e índice. Implementado `CounterScreen` + `CounterTest` (3 tests). Puerta local `BUILD SUCCESSFUL` en 1m 43s. Lanzados `android-verifier` y `android-reviewer` en paralelo; el reviewer entregó 2 hallazgos altos y 1 bajo (sin bloqueantes), ya documentados en `review.md` con su seguimiento.
+10. `android-verifier` → PASS: puerta local y `connectedAndroidTest` en verde (4 tests, 0 fallos, AVD `KallpaBase_API37`). Marcados CA-1 a CA-4 y T5; spec pasó a `verificado`. Corregidos los tres hallazgos del reviewer (A-1 evidenciado, B-1 documentado en `plan.md`; A-2 queda para el commit de la feature).
 
 ## Riesgos y pendientes
 
 - **Riesgo menor:** la allowlist `./gradlew *` es amplia; conviene estrecharla tras la primera semana de uso.
 - **Sin bloqueadores técnicos:** la toolchain, el linting y el emulador ya están validados en `docs/SETUP.md`.
-- **Pendiente:** arrancar la feature piloto `001` para validar el ciclo completo de extremo a extremo.
+- **Pendiente:** CI verde en el PR de la feature y cierre de la spec a `cerrado` con el número de PR. Sin push hasta confirmación humana.
 
 ## Siguiente paso
 
-Ejecutar el paso **10**: crear la rama `feature/001-<nombre>` y recorrer el ciclo completo con una feature piloto pequeña: `/spec.new` → `/spec.plan` → `/spec.tasks` → `/spec.implement` → `/spec.verify` + `/spec.review`. Después validar con los comandos del paso 11 antes del PR.
+Pasos **11 y 12**: commitear la feature con `feat: add compose counter with instrumented tests`, hacer push de `feature/001-contador-compose`, abrir el PR, verificar que ambos jobs de CI pasan y actualizar el índice a `cerrado`. El PR de la configuración (`chore/opencode-sdd-setup`, commit `794bb5f`) también queda pendiente de push/PR.
