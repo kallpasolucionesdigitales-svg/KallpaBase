@@ -77,6 +77,7 @@
 - **Dependabot (2026-11-22):** mergeados PRs **#1–#4** (`setup-java@v6`, `upload-artifact@v7`, `checkout@v7`, `cache@v6`), con lo que desaparecen los warnings de Node 20 / acciones deprecadas. PR **#5** (`setup-android` 3→4) ya estaba cerrado por redundante (`d4a591b`). YAML validado.
 - **Dependabot (2026-11-22, parte 2):** mergeados PRs **#6** (AGP `9.5.0`→`9.5.2`) y **#7** (Gradle wrapper `9.6.0`→`9.9.1`). Verificación local en worktree temporal: `ktlintCheck detekt lint test assembleDebug assembleRelease` → **BUILD SUCCESSFUL** (5m 34s) y `connectedAndroidTest` → **BUILD SUCCESSFUL** (1m 25s, API 37 / JBR 25). Gradle 9.9.1 corrige 3 advisories (1 critical, 2 high). Los fallos previos de CI en #6/#7 se debían al workflow anterior (`setup-android@v3`), ya corregido en `main`.
 - **Labels (2026-11-24):** creados y verificados `dependencies` (`#1d76db`) y `ci` (`#f61969`); 12 labels activos. Coinciden con `.github/dependabot.yml`, por lo que Dependabot ya no avisa de etiquetas faltantes.
+- **Dependabot (2026-11-24):** mergeado PR **#9** (Gradle wrapper `9.9.1`→`9.9.2`). El patch corrige 4 advisories de seguridad (SFTP host keys, verificación de snapshots, TestKit y daemon registry). Verificación local: checks completos + `connectedAndroidTest` → **BUILD SUCCESSFUL**; CI del PR (run **#16**) → **Success** en 6m 45s.
 
 ## Estado final
 
