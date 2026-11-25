@@ -1,0 +1,60 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "build",
+  "permissions": [
+    { "action": "shell", "resource": "*", "effect": "ask" },
+    { "action": "shell", "resource": "git status *", "effect": "allow" },
+    { "action": "shell", "resource": "git diff *", "effect": "allow" },
+    { "action": "shell", "resource": "git log *", "effect": "allow" },
+    { "action": "shell", "resource": "./gradlew *", "effect": "allow" },
+    { "action": "shell", "resource": "git push *", "effect": "deny" },
+    { "action": "read", "resource": "local.properties", "effect": "deny" },
+    { "action": "read", "resource": "*keystore*", "effect": "deny" },
+    { "action": "read", "resource": "*.env*", "effect": "deny" },
+    { "action": "edit", "resource": ".github/workflows/*", "effect": "ask" }
+  ],
+  "agents": {
+    "spec-writer": {
+      "description": "Convierte ideas en spec, plan y tareas verificables",
+      "mode": "all",
+      "system": "Trabaja solo dentro de docs/specs/<NNN-slug>/. Carga la skill spec-driven y usa sus plantillas. Define criterios de aceptación medibles y pruebas. No escribas código de producto ni ejecutes comandos.",
+      "permissions": [
+        { "action": "edit", "resource": "*", "effect": "deny" },
+        { "action": "edit", "resource": "docs/specs/**", "effect": "allow" },
+        { "action": "shell", "resource": "*", "effect": "deny" }
+      ]
+    },
+    "android-reviewer": {
+      "description": "Revisa cambios contra la spec y las convenciones Android de KallpaBase",
+      "mode": "subagent",
+      "system": "Revisa el diff contra spec.md, plan.md y tasks.md. Reporta hallazgos por severidad con archivo:linea y recomendación concreta. Escribe solo docs/specs/<NNN-slug>/review.md. No modifiques código.",
+      "permissions": [
+        { "action": "*", "resource": "*", "effect": "deny" },
+        { "action": "read", "resource": "*", "effect": "allow" },
+        { "action": "glob", "resource": "*", "effect": "allow" },
+        { "action": "grep", "resource": "*", "effect": "allow" },
+        { "action": "edit", "resource": "docs/specs/*/review.md", "effect": "allow" },
+        { "action": "shell", "resource": "git status *", "effect": "allow" },
+        { "action": "shell", "resource": "git diff *", "effect": "allow" },
+        { "action": "shell", "resource": "git log *", "effect": "allow" },
+        { "action": "read", "resource": "local.properties", "effect": "deny" },
+        { "action": "read", "resource": "*keystore*", "effect": "deny" },
+        { "action": "read", "resource": "*.env*", "effect": "deny" }
+      ]
+    },
+    "android-verifier": {
+      "description": "Ejecuta los chequeos Gradle y ADB de una spec sin modificar archivos",
+      "mode": "subagent",
+      "system": "Verifica los criterios de aceptación ejecutando los comandos de docs/specs. No edites archivos ni instales/desinstales APKs. Reporta PASS/FAIL con evidencia concreta.",
+      "permissions": [
+        { "action": "edit", "resource": "*", "effect": "deny" },
+        { "action": "shell", "resource": "adb install *", "effect": "deny" },
+        { "action": "shell", "resource": "adb uninstall *", "effect": "deny" },
+        { "action": "shell", "resource": "adb devices", "effect": "allow" },
+        { "action": "shell", "resource": "./gradlew *", "effect": "allow" },
+        { "action": "shell", "resource": "./gradlew *assembleRelease*", "effect": "deny" },
+        { "action": "shell", "resource": "./gradlew *publish*", "effect": "deny" }
+      ]
+    }
+  }
+}
