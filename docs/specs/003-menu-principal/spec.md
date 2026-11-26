@@ -1,7 +1,8 @@
 # 003 — Menú principal
 
-- Estado: verificado
+- Estado: cerrado
 - Rama: `feature/003-menu-principal`
+- PR: https://github.com/kallpasolucionesdigitales-svg/KallpaBase/pull/13
 - Fecha: 2026-11-26
 - Relación: F-23 del roadmap (módulo `Transversal`).
 

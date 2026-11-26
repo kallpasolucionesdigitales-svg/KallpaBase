@@ -53,7 +53,7 @@ La persistencia sigue el enfoque **B por fases**: el MVP guarda los datos en el 
 | F-20 | Control de maquinarias | Operaciones | Equipos, disponibilidad, mantenimiento y asignación | Planificar trabajos con recursos reales | Fase 2 | pendiente | — |
 | F-21 | Imputar recursos a presupuestos | Operaciones | Usar ítems de stock y maquinaria (con tarifa) dentro de un presupuesto | Presupuestos ajustados a los recursos disponibles | Idea | pendiente | — |
 | F-22 | Desactivación de clientes | Cartera | Sustituir la baja por un estado `inactivo`, conservando el historial del cliente | No perder presupuestos ni datos al dejar de trabajar con un cliente | Idea | pendiente | — |
-| F-23 | Navegación principal | Transversal | Barra inferior con cuatro destinos y barra superior con título y acciones | Acceder a los módulos sin callejones sin salida | MVP | verificado | `docs/specs/003-menu-principal/spec.md` |
+| F-23 | Navegación principal | Transversal | Barra inferior con cuatro destinos y barra superior con título y acciones | Acceder a los módulos sin callejones sin salida | MVP | cerrado | `docs/specs/003-menu-principal/spec.md` |
 
 ## Decisiones tomadas
 
@@ -110,4 +110,4 @@ Se resuelven al escribir la spec correspondiente; no bloquean el inventario.
 3. Actualizar en esta tabla la columna `Spec` con la ruta creada y el `Estado` con la fase del ciclo SDD.
 4. Continuar con `/spec.plan` → `/spec.tasks` → `/spec.implement` → `/spec.verify` + `/spec.review` → PR.
 
-Primera funcionalidad ejecutada: **F-01 Gestión de clientes** → `docs/specs/002-gestion-clientes/spec.md` (cerrada), con F-11 (persistencia local) como requisito no funcional y también verificada. **F-23 Navegación principal** → `docs/specs/003-menu-principal/spec.md` (verificada). Siguiente recomendada: **F-02 Listado y búsqueda de clientes** → `004-listado-busqueda-clientes`.
+Primera funcionalidad ejecutada: **F-01 Gestión de clientes** → `docs/specs/002-gestion-clientes/spec.md` (cerrada), con F-11 (persistencia local) como requisito no funcional y también verificada. **F-23 Navegación principal** → `docs/specs/003-menu-principal/spec.md` (cerrada, PR #13). Siguiente recomendada: **F-02 Listado y búsqueda de clientes** → `004-listado-busqueda-clientes`.
