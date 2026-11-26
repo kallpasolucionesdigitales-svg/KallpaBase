@@ -15,4 +15,4 @@ Toda funcionalidad nueva de KallpaBase se define aquí antes de implementarse. E
 
 | ID | Título | Estado | Rama | PR |
 | --- | --- | --- | --- | --- |
-| 001 | Contador Compose en MainActivity | verificado | `feature/001-contador-compose` | — |
+| 001 | Contador Compose en MainActivity | cerrado | `feature/001-contador-compose` | [#11](https://github.com/kallpasolucionesdigitales-svg/KallpaBase/pull/11) |

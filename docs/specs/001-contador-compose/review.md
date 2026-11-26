@@ -46,11 +46,12 @@ Comprobaciones sin hallazgos: `GreetingTest` permanece intacto (T3), `gradle/lib
 
 ## Conclusión
 
-La implementación cubre correctamente CA-1 a CA-3 y respeta las convenciones revisadas; no se encontraron defectos de código ni secretos/archivos generados. A-1 quedó resuelto con la verificación del subagente `android-verifier`. Queda pendiente A-2 (commit) y la comprobación de CI verde antes de cerrar la spec.
+La implementación cubre correctamente CA-1 a CA-3 y respeta las convenciones revisadas; no se encontraron defectos de código ni secretos/archivos generados. Los tres hallazgos quedaron resueltos: A-1 con verificación local, B-1 documentado en `plan.md` y A-2 con el commit `5c4d4b6` incluido en el PR #11. CI terminó en verde. La spec se cierra sin hallazgos bloqueantes.
 
-## Seguimiento del implementador (2026-11-24 23:04 -03)
+## Seguimiento del implementador (2026-11-24 23:04 -03; cierre 2026-11-26)
 
 - **A-1 resuelto:** el agente principal ejecutó `./gradlew --no-daemon ktlintCheck detekt lint test assembleDebug` → `BUILD SUCCESSFUL` en 1m 43s (62 tareas). El subagente `android-verifier` ejecutó además `./gradlew connectedAndroidTest` → `BUILD SUCCESSFUL` en 49s con 4 tests, 0 fallos y 0 omitidos en `KallpaBase_API37`. Los cuatro criterios CA-1 a CA-4 están marcados en `spec.md` y T5 en `tasks.md`.
-- **A-2 pendiente:** se hará `git add` + commit `feat: add compose counter with instrumented tests` para que CI incluya `CounterTest.kt` y los artefactos. Después se exigirá CI verde en el PR.
+- **A-2 resuelto:** commit `5c4d4b6` (`feat: add compose counter with instrumented tests`), pusheado y abierto como [PR #11](https://github.com/kallpasolucionesdigitales-svg/KallpaBase/pull/11). Incluye `CounterTest.kt` y los artefactos de la spec.
 - **B-1 resuelto:** `plan.md` ya documenta el rename `GreetingPreview` → `CounterScreenPreview`.
-- **Nota del verificador:** `ktlintCheck`, `detekt`, `test` y `assembleDebug` aparecieron UP-TO-DATE en su corrida; el resultado es válido sobre los outputs de la ejecución previa del implementador. RNF-3 (CI) no fue verificada por el subagente por no consultar PR/remote.
+- **Nota del verificador:** `ktlintCheck`, `detekt`, `test` y `assembleDebug` aparecieron UP-TO-DATE en su corrida; el resultado es válido sobre los outputs de la ejecución previa del implementador.
+- **CI (RNF-3) verificado:** run [`45818074320`](https://github.com/kallpasolucionesdigitales-svg/KallpaBase/actions/runs/45818074320) sobre `5c4d4b6` → ambos jobs en verde: "Build y checks estáticos" (1m28s) y "Tests instrumentados (API 37)" (3m56s). Se lanzó con `workflow_dispatch` porque el cambio de base del PR a `main` no dispara el evento `pull_request` por defecto.

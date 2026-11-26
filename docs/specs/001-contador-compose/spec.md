@@ -1,8 +1,9 @@
 # 001 — Contador Compose en MainActivity
 
-- Estado: verificado
+- Estado: cerrado
 - Rama: `feature/001-contador-compose`
-- Fecha: 2026-11-24
+- PR: https://github.com/kallpasolucionesdigitales-svg/KallpaBase/pull/11
+- Fecha: 2026-11-24 (cerrada el 2026-11-26)
 
 ## Contexto
 
