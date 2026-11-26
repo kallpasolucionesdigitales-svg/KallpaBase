@@ -94,7 +94,8 @@ Ciclo de trabajo: **`/spec.new` → `/spec.plan` → `/spec.tasks` → `/spec.im
 15. PR #11 mergeado (`638e56c`); spec 001 quedó cerrada. Se automatizó la creación de ramas en `/spec.new` (`6b3a349`).
 16. Spec 002 (gestión de clientes) implementada, verificada con 6 tests unitarios y 14 instrumentados, y mergeada mediante PR #12 (`42bbe4d`). CI del PR (`45885350035`) y de `main` (`45885389796`) en verde.
 17. Saneamiento documental: spec 002 pasa a `cerrado` con enlace al PR #12; `docs/OPENCODE_SDD.md`, `docs/ROADMAP.md`, `docs/specs/README.md` y `review.md` de 002 reflejan el estado real. Se descartó la rama local huérfana `feature/004-menu-principal` y se creó `feature/003-menu-principal` desde `main`.
-18. Spec 003 (F-23): `plan.md` y `tasks.md` generados; implementado `MainScreen` con `Scaffold`, `TopAppBar` y `NavigationBar` de cuatro destinos, solo `Clientes` habilitado. Añadidos cuatro tests `MainMenuTest` con `createComposeRule` (API v2). Puerta local en verde (6 unitarios, 0 fallos) y `connectedAndroidTest` en verde en `KallpaBase_API37` (18 instrumentados, 0 fallos). Spec pasa a `verificado`; queda la revisión y el PR.
+18. Spec 003 (F-23): `plan.md` y `tasks.md` generados; implementado `MainScreen` con `Scaffold`, `TopAppBar` y `NavigationBar` de cuatro destinos, solo `Clientes` habilitado. Añadidos cuatro tests `MainMenuTest` con `createComposeRule` (API v2). Puerta local en verde (6 unitarios, 0 fallos) y `connectedAndroidTest` en verde en `KallpaBase_API37` (18 instrumentados, 0 fallos). Spec pasa a `verificado`.
+19. Revisión de `android-reviewer`: sin bloqueantes; resueltos A-1 (commit `96c3815` con código y artefactos), M-1 (no-objetivo de la spec 003 aclarado; saneamiento de 002 quedó en `0e9e9bf`) y B-1 (CA-1 ajustado al composable raíz). Seguimiento no bloqueante: iniciales ambiguas en la barra inferior y cobertura de rotación/navegación positiva al habilitar un segundo destino.
 
 ## Riesgos y pendientes
 
@@ -106,4 +107,4 @@ Ciclo de trabajo: **`/spec.new` → `/spec.plan` → `/spec.tasks` → `/spec.im
 
 ## Siguiente paso
 
-Commitear la spec 003, revisar el `review.md` del subagente y abrir su PR solo tras puerta local y CI en verde; hacer `push` únicamente con confirmación humana. Después, continuar con F-02 (listado y búsqueda de clientes).
+Commitear el `review.md` y las tareas cerradas, abrir el PR de la spec 003 solo tras puerta local y CI en verde, y hacer `push` únicamente con confirmación humana. Después, continuar con F-02 (listado y búsqueda de clientes).
