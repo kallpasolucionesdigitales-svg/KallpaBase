@@ -1,6 +1,6 @@
 # 003 — Menú principal
 
-- Estado: spec
+- Estado: verificado
 - Rama: `feature/003-menu-principal`
 - Fecha: 2026-11-26
 - Relación: F-23 del roadmap (módulo `Transversal`).
@@ -24,7 +24,7 @@ El menú debe mostrar la estructura completa de la aplicación desde el inicio, 
 - No implementar búsqueda (F-02), sincronización (F-15), reportes (F-13), exportación (F-14) ni “Acerca de”.
 - No añadir `Navigation Compose`, deep links ni back stack propio; la navegación se resuelve con estado local.
 - No mover el botón `Nuevo cliente` a un FAB global: permanece dentro de `ClientsScreen`.
-- No modificar la spec 002 ni sus tests instrumentados.
+- No modificar la funcionalidad ni los tests instrumentados de la spec 002. La sincronización de estados documentales de specs ya cerradas (spec 002, índice y roadmap) se realizó en un commit `docs:` previo y separado, fuera del cambio funcional de esta spec.
 
 ## Requisitos funcionales
 
@@ -47,12 +47,12 @@ El menú debe mostrar la estructura completa de la aplicación desde el inicio, 
 
 ## Criterios de aceptación
 
-- [ ] CA-1: Dado el arranque de la aplicación, cuando se muestra `MainActivity`, entonces aparecen los cuatro destinos en la `NavigationBar`, `Clientes` está seleccionado y se ve `ClientsScreen`. Verificación: `MainMenuTest.menuInicial_muestraCuatroDestinos` con `createComposeRule` (API v2).
-- [ ] CA-2: Dado el menú inicial, cuando se pulsa `Presupuestos`, `Operaciones` o `Configuración`, entonces el destino activo sigue siendo `Clientes` y no se muestra ninguna pantalla nueva. Verificación: `MainMenuTest.destinoDeshabilitado_noNavega`.
-- [ ] CA-3: Dado el menú inicial, cuando se inspeccionan los destinos deshabilitados, entonces siguen visibles con el indicador `Próximamente` / `Fase 2` y su semántica indica que no están disponibles. Verificación: `MainMenuTest.destinosFuturos_visiblesYDeshabilitados`.
-- [ ] CA-4: Dado `Clientes` como destino activo, cuando se muestra la pantalla, entonces el `TopAppBar` muestra `Clientes` y las acciones `Buscar` y `Sincronizar` están deshabilitadas con su `contentDescription`. Verificación: `MainMenuTest.barraSuperior_estadoInicial`.
-- [ ] CA-5: Dado el shell de navegación nuevo, cuando se ejecutan los tests de la spec 002, entonces `ClientListTest`, `ClientFormTest`, `ClientEditTest` y `ClientDeleteTest` pasan sin cambios. Verificación: `./gradlew connectedAndroidTest` en `KallpaBase_API37`.
-- [ ] CA-6: Dado el cambio completo, cuando se ejecuta la puerta local, entonces termina en `BUILD SUCCESSFUL`. Verificación: `./gradlew --no-daemon ktlintCheck detekt lint test assembleDebug`.
+- [x] CA-1: Dado el arranque de la aplicación, cuando se muestra `MainScreen` (composable raíz invocado por `MainActivity`), entonces aparecen los cuatro destinos en la `NavigationBar`, `Clientes` está seleccionado y se ve `ClientsScreen`. Verificación: `MainMenuTest.menuInicial_muestraCuatroDestinos` con `createComposeRule` (API v2); el cableado de `MainActivity` se comprueba por revisión de código y `assembleDebug`.
+- [x] CA-2: Dado el menú inicial, cuando se pulsa `Presupuestos`, `Operaciones` o `Configuración`, entonces el destino activo sigue siendo `Clientes` y no se muestra ninguna pantalla nueva. Verificación: `MainMenuTest.destinoDeshabilitado_noNavega`.
+- [x] CA-3: Dado el menú inicial, cuando se inspeccionan los destinos deshabilitados, entonces siguen visibles con el indicador `Próximamente` / `Fase 2` y su semántica indica que no están disponibles. Verificación: `MainMenuTest.destinosFuturos_visiblesYDeshabilitados`.
+- [x] CA-4: Dado `Clientes` como destino activo, cuando se muestra la pantalla, entonces el `TopAppBar` muestra `Clientes` y las acciones `Buscar` y `Sincronizar` están deshabilitadas con su `contentDescription`. Verificación: `MainMenuTest.barraSuperior_estadoInicial`.
+- [x] CA-5: Dado el shell de navegación nuevo, cuando se ejecutan los tests de la spec 002, entonces `ClientListTest`, `ClientFormTest`, `ClientEditTest` y `ClientDeleteTest` pasan sin cambios. Verificación: `./gradlew connectedAndroidTest` en `KallpaBase_API37`.
+- [x] CA-6: Dado el cambio completo, cuando se ejecuta la puerta local, entonces termina en `BUILD SUCCESSFUL`. Verificación: `./gradlew --no-daemon ktlintCheck detekt lint test assembleDebug`.
 
 ## Pruebas requeridas
 

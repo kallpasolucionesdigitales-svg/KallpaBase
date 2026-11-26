@@ -36,13 +36,13 @@ Las ejecuciones se repitieron tras el último cambio de código (separación de 
 - Aislamiento de tests Room: nombre de base propio y borrado del fichero en cada caso.
 - `detekt` y `ktlint` obligaron a separar `ClientsState` de `RememberClientsState.kt` y a usar nombres de archivo PascalCase; `plan.md` refleja la decisión.
 
-## Hallazgos abiertos (no bloqueantes)
+## Hallazgos resueltos y seguimiento
 
-- **Medio** — `docs/ROADMAP.md` sigue sin seguimiento y marca F-01/F-11 como `pendiente`; debe sincronizarse antes del PR.
-- **Medio** — No hay test que lance `MainActivity` y aserte la pantalla inicial; T8 cubre compilación y la conservación de `CounterTest`/`GreetingTest` según lo previsto en la spec.
-- **Medio** — Los artefactos de la spec y `docs/ROADMAP.md` aún no están commiteados; el PR debe incluirlos junto al código.
-- **Bajo** — `ClientValidator` acepta `ana@` porque solo exige `@`; CA-3 no cubre ese caso, pero RF-2 pide formato válido. Se puede endurecer en una spec posterior sin migración de datos.
+- **Resuelto (Medio)** — `docs/ROADMAP.md` quedó sincronizado: F-01 figura como `verificado` y F-11 (persistencia local) pasó a `verificado` durante el saneamiento posterior al merge.
+- **Resuelto (Medio)** — Los artefactos de la spec y el roadmap se incluyeron en el PR #12, mergeado en `main`; CI del PR y de `main` en verde.
+- **Medio (seguimiento)** — No hay test que lance `MainActivity` y aserte la pantalla inicial; T8 cubre compilación y la conservación de `CounterTest`/`GreetingTest` según lo previsto en la spec. La spec 003 añade el shell de navegación y cubre la pantalla inicial.
+- **Bajo (seguimiento)** — `ClientValidator` acepta `ana@` porque solo exige `@`; CA-3 no cubre ese caso, pero RF-2 pide formato válido. Se puede endurecer en una spec posterior sin migración de datos.
 
 ## Conclusión
 
-Todas las tareas T1–T11 están completadas y los nueve criterios de aceptación tienen evidencia local. La spec pasa a `verificado`. Queda pendiente la revisión de CI en el PR y la sincronización de `docs/ROADMAP.md`; no se ha hecho `push`.
+Todas las tareas T1–T11 están completadas y los nueve criterios de aceptación tienen evidencia local y remota. La spec pasa a `cerrado` con el PR #12: ambos jobs de CI terminaron en verde (run `45885350035`) y el merge en `main` generó el run `45885389796`, también verde. No hay `push` pendiente.

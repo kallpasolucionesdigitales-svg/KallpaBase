@@ -41,7 +41,7 @@ La persistencia sigue el enfoque **B por fases**: el MVP guarda los datos en el 
 | F-08 | Historial por cliente | Cartera | Ver todos los presupuestos de un cliente | Contexto al negociar | Fase 2 | pendiente | — |
 | F-09 | Generar PDF | Presupuestos | Documento exportable y listo para compartir | Entrega profesional al cliente | Fase 2 | pendiente | — |
 | F-10 | Envío por email / WhatsApp | Presupuestos | Compartir el presupuesto desde la app | Cerrar el ciclo sin salir de la aplicación | Fase 2 | pendiente | — |
-| F-11 | Persistencia local | Transversal | `Room` / `DataStore`; los datos sobreviven al cierre de la app, con capa preparada para sincronización | Confiabilidad y base para F-15 | MVP | pendiente | — |
+| F-11 | Persistencia local | Transversal | `Room` / `DataStore`; los datos sobreviven al cierre de la app, con capa preparada para sincronización | Confiabilidad y base para F-15 | MVP | verificado | `docs/specs/002-gestion-clientes/spec.md` |
 | F-12 | Notas y recordatorios | Cartera | Avisos de vencimiento de presupuestos, stock mínimo y mantenimiento | No perder oportunidades ni tareas pendientes | Idea | pendiente | — |
 | F-13 | Dashboard comercial | Reportes | Métricas: aprobados, facturación estimada, conversión y valorización de stock | Visión del negocio | Idea | pendiente | — |
 | F-14 | Exportar datos (CSV) | Reportes | Backup y portabilidad de clientes y presupuestos | Propiedad de los datos | Idea | pendiente | — |
@@ -53,7 +53,7 @@ La persistencia sigue el enfoque **B por fases**: el MVP guarda los datos en el 
 | F-20 | Control de maquinarias | Operaciones | Equipos, disponibilidad, mantenimiento y asignación | Planificar trabajos con recursos reales | Fase 2 | pendiente | — |
 | F-21 | Imputar recursos a presupuestos | Operaciones | Usar ítems de stock y maquinaria (con tarifa) dentro de un presupuesto | Presupuestos ajustados a los recursos disponibles | Idea | pendiente | — |
 | F-22 | Desactivación de clientes | Cartera | Sustituir la baja por un estado `inactivo`, conservando el historial del cliente | No perder presupuestos ni datos al dejar de trabajar con un cliente | Idea | pendiente | — |
-| F-23 | Navegación principal | Transversal | Barra inferior con cuatro destinos y barra superior con título y acciones | Acceder a los módulos sin callejones sin salida | MVP | spec | `docs/specs/003-menu-principal/spec.md` |
+| F-23 | Navegación principal | Transversal | Barra inferior con cuatro destinos y barra superior con título y acciones | Acceder a los módulos sin callejones sin salida | MVP | verificado | `docs/specs/003-menu-principal/spec.md` |
 
 ## Decisiones tomadas
 
@@ -110,4 +110,4 @@ Se resuelven al escribir la spec correspondiente; no bloquean el inventario.
 3. Actualizar en esta tabla la columna `Spec` con la ruta creada y el `Estado` con la fase del ciclo SDD.
 4. Continuar con `/spec.plan` → `/spec.tasks` → `/spec.implement` → `/spec.verify` + `/spec.review` → PR.
 
-Primera funcionalidad ejecutada: **F-01 Gestión de clientes** → `docs/specs/002-gestion-clientes/spec.md` (verificada), con F-11 (persistencia local) como requisito no funcional. En curso: **F-23 Navegación principal** → `docs/specs/003-menu-principal/spec.md`. Siguiente recomendada: **F-02 Listado y búsqueda de clientes** → `004-listado-busqueda-clientes`.
+Primera funcionalidad ejecutada: **F-01 Gestión de clientes** → `docs/specs/002-gestion-clientes/spec.md` (cerrada), con F-11 (persistencia local) como requisito no funcional y también verificada. **F-23 Navegación principal** → `docs/specs/003-menu-principal/spec.md` (verificada). Siguiente recomendada: **F-02 Listado y búsqueda de clientes** → `004-listado-busqueda-clientes`.
