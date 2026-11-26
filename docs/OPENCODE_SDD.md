@@ -29,6 +29,7 @@ La base Android ya estaba lista y verde; ver `docs/SETUP.md` para el detalle del
 | Ubicación | Config versionada en la raíz y `.opencode/` del proyecto; no se modifica la config global `~/.config/opencode`. |
 | SDD | Artefactos por función en `docs/specs/<NNN-slug>/`: `spec.md`, `plan.md`, `tasks.md`, `review.md`. |
 | Interfaz de equipo | Seis comandos: `/spec.new`, `/spec.plan`, `/spec.tasks`, `/spec.implement`, `/spec.verify`, `/spec.review`. |
+| Creación de rama | `/spec.new` deriva `NNN-slug`, exige árbol limpio (`git status --porcelain`), crea o reutiliza `feature/<NNN-slug>` desde `main` antes de escribir archivos. Nunca hace `push` ni `commit`. |
 | Verificación | Puerta local: `./gradlew --no-daemon ktlintCheck detekt lint test assembleDebug` y `./gradlew connectedAndroidTest` con el AVD; TODO PR debe tener CI verde. |
 
 ## Arquitectura aplicada
@@ -37,7 +38,7 @@ La base Android ya estaba lista y verde; ver `docs/SETUP.md` para el detalle del
 | --- | --- |
 | `AGENTS.md` | Convenciones del proyecto: comandos canónicos, version catalog, Compose/Material 3, secretos fuera del repo, enlaces a `docs/SETUP.md` y `docs/specs/README.md`. |
 | `opencode.jsonc` | `$schema`, `default_agent: "build"`, permisos globales y los 3 agentes propios. |
-| `.opencode/commands/spec.new.md` | Crea `spec.md` desde `$ARGUMENTS`; agente `spec-writer`. |
+| `.opencode/commands/spec.new.md` | Crea o reutiliza `feature/<NNN-slug>` con árbol limpio y luego genera `spec.md` desde `$ARGUMENTS`; agente `spec-writer`. |
 | `.opencode/commands/spec.plan.md` | Genera `plan.md`; agente `spec-writer`. |
 | `.opencode/commands/spec.tasks.md` | Genera `tasks.md` como checklist ordenado; agente `spec-writer`. |
 | `.opencode/commands/spec.implement.md` | Implementa tareas pendientes; agente `build`. |
