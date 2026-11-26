@@ -1,6 +1,6 @@
 # Configuración de OpenCode y Spec-Driven Development en KallpaBase
 
-> Estado: **EN CURSO** · Rama: `feature/003-menu-principal` · PRs #10, #11 y #12 mergeados en `main` · Última actualización: 2026-11-26
+> Estado: **EN CURSO** · Rama: `docs/close-spec-003` · PRs #10, #11, #12 y #13 mergeados en `main` · Última actualización: 2026-11-26
 
 ## Objetivo
 
@@ -65,7 +65,7 @@ Ciclo de trabajo: **`/spec.new` → `/spec.plan` → `/spec.tasks` → `/spec.im
 - [x] **Paso 11** — Validado localmente y CI en verde: run `45818074320` (ambos jobs), PR #11; spec 001 cerrada.
 - [x] **Paso 12** — Push de ambas ramas y PRs: #10, #11 y #12 mergeados en `main`, con CI verde en cada merge.
 - [x] **Paso 13** — Spec 002 (gestión de clientes) verificada y cerrada en el PR #12; `docs/ROADMAP.md` y el índice de specs sincronizados.
-- [x] **Paso 14** — Spec 003 (menú principal): plan → tareas → implementación → verificación → revisión. Pendiente de PR.
+- [x] **Paso 14** — Spec 003 (menú principal): plan → tareas → implementación → verificación → revisión → PR #13 mergeado en `main` y spec cerrada.
 
 ## Registro de progreso
 
@@ -96,15 +96,16 @@ Ciclo de trabajo: **`/spec.new` → `/spec.plan` → `/spec.tasks` → `/spec.im
 17. Saneamiento documental: spec 002 pasa a `cerrado` con enlace al PR #12; `docs/OPENCODE_SDD.md`, `docs/ROADMAP.md`, `docs/specs/README.md` y `review.md` de 002 reflejan el estado real. Se descartó la rama local huérfana `feature/004-menu-principal` y se creó `feature/003-menu-principal` desde `main`.
 18. Spec 003 (F-23): `plan.md` y `tasks.md` generados; implementado `MainScreen` con `Scaffold`, `TopAppBar` y `NavigationBar` de cuatro destinos, solo `Clientes` habilitado. Añadidos cuatro tests `MainMenuTest` con `createComposeRule` (API v2). Puerta local en verde (6 unitarios, 0 fallos) y `connectedAndroidTest` en verde en `KallpaBase_API37` (18 instrumentados, 0 fallos). Spec pasa a `verificado`.
 19. Revisión de `android-reviewer`: sin bloqueantes; resueltos A-1 (commit `96c3815` con código y artefactos), M-1 (no-objetivo de la spec 003 aclarado; saneamiento de 002 quedó en `0e9e9bf`) y B-1 (CA-1 ajustado al composable raíz). Seguimiento no bloqueante: iniciales ambiguas en la barra inferior y cobertura de rotación/navegación positiva al habilitar un segundo destino.
+20. PR #13 mergeado (`0f9e5cc`); spec 003 (F-23) pasó a `cerrado` con CI verde en los jobs "Build y checks estáticos" y "Tests instrumentados (API 37)". Se actualizaron `spec.md`, `review.md`, `docs/specs/README.md`, `docs/ROADMAP.md` y este registro. La rama local `feature/003-menu-principal` se eliminó tras el merge; la remota se conserva.
 
 ## Riesgos y pendientes
 
 - **Riesgo menor:** la allowlist `./gradlew *` es amplia; conviene estrecharla tras la primera semana de uso.
 - **Sin bloqueadores técnicos:** la toolchain, el linting y el emulador ya están validados en `docs/SETUP.md`.
-- **Sin PRs abiertos:** #10, #11 y #12 están mergeados en `main`, con CI verde; no hay push pendiente.
-- **Pendiente de PR:** spec 003 (F-23, navegación principal) verificada localmente sobre `feature/003-menu-principal`, creada desde `main` (`42bbe4d`). El destino `Clientes` se habilita porque su spec está cerrada; los demás permanecen deshabilitados.
+- **Sin PRs abiertos:** #10, #11, #12 y #13 están mergeados en `main`, con CI verde; no hay push pendiente.
+- **Sin specs pendientes de cierre:** 001, 002 y 003 están `cerradas`. El menú principal tiene habilitado solo `Clientes`; los demás destinos permanecen deshabilitados hasta que sus specs se verifiquen.
 - **Nota:** el cambio de base a `main` no dispara `pull_request`, por eso el primer CI de 001 fue `workflow_dispatch` (`45818074320`, verde sobre `5c4d4b6`). El push del commit de cierre `0e05b47` generó el run de PR `45820009036`, también en verde.
 
 ## Siguiente paso
 
-Commitear el `review.md` y las tareas cerradas, abrir el PR de la spec 003 solo tras puerta local y CI en verde, y hacer `push` únicamente con confirmación humana. Después, continuar con F-02 (listado y búsqueda de clientes).
+Continuar con F-02 (listado y búsqueda de clientes): crear `feature/004-listado-busqueda-clientes` desde `main` y ejecutar `/spec.new` con el siguiente ID libre. Cualquier `push` requiere confirmación humana.

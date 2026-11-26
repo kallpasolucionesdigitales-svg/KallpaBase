@@ -2,7 +2,7 @@
 
 - Rama: `feature/003-menu-principal`.
 - Base revisada: `42bbe4d`; commits en la rama: `0e9e9bf docs: sync spec statuses after PR 12` y `96c3815 feat: add main navigation shell (spec 003)`.
-- Estado de la documentación al cierre de la revisión: `verificado` en `spec.md`, `docs/specs/README.md` y `docs/ROADMAP.md` (F-23); PR aún no abierto.
+- Estado al cierre: `cerrado` en `spec.md`, `docs/specs/README.md` y `docs/ROADMAP.md` (F-23); PR #13 mergeado en `main` (`0f9e5cc`) con CI en verde.
 - Fecha: 2026-11-26.
 - Alcance: `spec.md`, `plan.md`, `tasks.md`, `MainScreen.kt`, `MainActivity.kt`, `MainMenuTest.kt`, índice de specs, roadmap y evidencia de Gradle aportada por la sesión solicitante.
 - Limitación del revisor: no se ejecutó Gradle ni se hizo `push`; las salidas de Gradle se aceptan como evidencia real ya obtenida y se citan, no se reproducen.
@@ -40,7 +40,7 @@ Ninguno. No se encontró ningún defecto funcional que impida cumplir CA-1…CA-
 | CA-3 | Verificado | `MainMenuTest.destinosFuturos_visiblesYDeshabilitados` (`MainMenuTest.kt:68-86`): `assertIsDisplayed()` + `assertIsNotEnabled()` para los tres destinos, dos apariciones de `Próximamente` y una de `Fase 2`; semántica definida en `MainScreen.kt:45-62,168-170`. |
 | CA-4 | Verificado | `MainMenuTest.barraSuperior_estadoInicial` (`MainMenuTest.kt:89-116`): título `Título, Clientes`, `Buscar`/`Sincronizar` deshabilitados con su `contentDescription`, overflow abierto con `Reportes`, `Exportar` y `Acerca de` deshabilitados; implementación en `MainScreen.kt:93-140`. |
 | CA-5 | Verificado | `./gradlew --no-daemon connectedAndroidTest` en `KallpaBase_API37` → `BUILD SUCCESSFUL`, 18 tests instrumentados (14 previos + 4 nuevos), 0 fallos. `git status` confirma que `ClientListTest`, `ClientFormTest`, `ClientEditTest`, `ClientDeleteTest`, `CounterTest` y `GreetingTest` no se modificaron; `ClientsScreen` conserva su API (`ClientsScreen.kt:27`) y solo recibe `Modifier.padding` (`MainScreen.kt:80-83`). |
-| CA-6 | Verificado | `./gradlew --no-daemon ktlintCheck detekt lint test assembleDebug` → `BUILD SUCCESSFUL`, 6 tests unitarios, 0 fallos; `git diff --check` sin salida. Los comandos coinciden con el job `build` de `.github/workflows/android.yml:45`; el job instrumentado usa la misma puerta en `android.yml:99-109`. CI remoto queda pendiente del PR. |
+| CA-6 | Verificado | `./gradlew --no-daemon ktlintCheck detekt lint test assembleDebug` → `BUILD SUCCESSFUL`, 6 tests unitarios, 0 fallos; `git diff --check` sin salida. Los comandos coinciden con el job `build` de `.github/workflows/android.yml:45`; el job instrumentado usa la misma puerta en `android.yml:99-109`. CI remoto del PR #13 en verde (ambos jobs). |
 
 ## Comandos ejecutados
 
@@ -61,7 +61,7 @@ Evidencia real aportada, no reejecutada por este revisor:
 | `./gradlew --no-daemon ktlintCheck detekt lint test assembleDebug` | `BUILD SUCCESSFUL` — 6 tests unitarios, 0 fallos; ktlint, detekt y lint sin hallazgos; APK debug generado. |
 | `./gradlew --no-daemon connectedAndroidTest` en `KallpaBase_API37` | `BUILD SUCCESSFUL` — 18 tests instrumentados, 0 fallos. |
 
-Pendiente: ejecución de `.github/workflows/android.yml` sobre el commit final del PR; no se realizó `push`.
+CI ejecutado en el PR #13 (head `4e29eb2`) y en el merge `0f9e5cc`: ambos jobs en `success`.
 
 ## Convenciones, dependencias y artefactos
 
@@ -72,4 +72,4 @@ Pendiente: ejecución de `.github/workflows/android.yml` sobre el commit final d
 
 ## Conclusión
 
-Los seis criterios CA-1…CA-6 tienen evidencia local en verde y la implementación cumple RF-1…RF-7 y RNF-1…RNF-5; no hay hallazgos bloqueantes. **A-1**, **M-1** y **B-1** quedan resueltos con el commit `96c3815`, el commit `docs:` separado `0e9e9bf` y el ajuste de CA-1 a la verificación del composable raíz. Queda como seguimiento no bloqueante **B-2** (iniciales ambiguas `C` para `Clientes` y `Configuración`), además de las limitaciones ya documentadas de RF-8 y CA-2, que se cubrirán al habilitar un segundo destino. El estado `verificado` es adecuado para la evidencia local; el paso a `cerrado` debe esperar a que el CI del PR termine en verde. No se ha hecho `push`.
+Los seis criterios CA-1…CA-6 tienen evidencia local en verde y la implementación cumple RF-1…RF-7 y RNF-1…RNF-5; no hay hallazgos bloqueantes. **A-1**, **M-1** y **B-1** quedan resueltos con el commit `96c3815`, el commit `docs:` separado `0e9e9bf` y el ajuste de CA-1 a la verificación del composable raíz. Queda como seguimiento no bloqueante **B-2** (iniciales ambiguas `C` para `Clientes` y `Configuración`), además de las limitaciones ya documentadas de RF-8 y CA-2, que se cubrirán al habilitar un segundo destino. Con el PR #13 mergeado y el CI en verde, el estado pasó a `cerrado`. No se ha hecho `push` desde esta sesión de cierre documental.
