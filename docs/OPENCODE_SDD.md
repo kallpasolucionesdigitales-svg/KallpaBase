@@ -91,7 +91,7 @@ Ciclo de trabajo: **`/spec.new` → `/spec.plan` → `/spec.tasks` → `/spec.im
 - **Riesgo menor:** la allowlist `./gradlew *` es amplia; conviene estrecharla tras la primera semana de uso.
 - **Sin bloqueadores técnicos:** la toolchain, el linting y el emulador ya están validados en `docs/SETUP.md`.
 - **Pendiente:** merge del PR #11 tras aprobación humana. El ciclo SDD quedó completo; no hay push pendiente una vez commiteado este registro.
-- **Nota:** el PR #11 no muestra checks en la UI porque el run de CI fue `workflow_dispatch` (el cambio de base no dispara `pull_request`). La evidencia existe en el run `45818074320` sobre el head `5c4d4b6`; el commit de documentación que sigue disparará un run de PR normal.
+- **Nota:** el cambio de base a `main` no dispara `pull_request`, por eso el primer CI fue `workflow_dispatch` (`45818074320`, verde sobre `5c4d4b6`). El push del commit de cierre `0e05b47` generó el run de PR `45820009036`, también en verde: ambos checks aparecen ahora en `gh pr checks 11`.
 
 ## Siguiente paso
 
