@@ -65,7 +65,7 @@ Ciclo de trabajo: **`/spec.new` → `/spec.plan` → `/spec.tasks` → `/spec.im
 - [x] **Paso 11** — Validado localmente y CI en verde: run `45818074320` (ambos jobs), PR #11; spec 001 cerrada.
 - [x] **Paso 12** — Push de ambas ramas y PRs: #10, #11 y #12 mergeados en `main`, con CI verde en cada merge.
 - [x] **Paso 13** — Spec 002 (gestión de clientes) verificada y cerrada en el PR #12; `docs/ROADMAP.md` y el índice de specs sincronizados.
-- [ ] **Paso 14** — Spec 003 (menú principal): plan → tareas → implementación → verificación → revisión → PR.
+- [x] **Paso 14** — Spec 003 (menú principal): plan → tareas → implementación → verificación → revisión. Pendiente de PR.
 
 ## Registro de progreso
 
@@ -94,15 +94,16 @@ Ciclo de trabajo: **`/spec.new` → `/spec.plan` → `/spec.tasks` → `/spec.im
 15. PR #11 mergeado (`638e56c`); spec 001 quedó cerrada. Se automatizó la creación de ramas en `/spec.new` (`6b3a349`).
 16. Spec 002 (gestión de clientes) implementada, verificada con 6 tests unitarios y 14 instrumentados, y mergeada mediante PR #12 (`42bbe4d`). CI del PR (`45885350035`) y de `main` (`45885389796`) en verde.
 17. Saneamiento documental: spec 002 pasa a `cerrado` con enlace al PR #12; `docs/OPENCODE_SDD.md`, `docs/ROADMAP.md`, `docs/specs/README.md` y `review.md` de 002 reflejan el estado real. Se descartó la rama local huérfana `feature/004-menu-principal` y se creó `feature/003-menu-principal` desde `main`.
+18. Spec 003 (F-23): `plan.md` y `tasks.md` generados; implementado `MainScreen` con `Scaffold`, `TopAppBar` y `NavigationBar` de cuatro destinos, solo `Clientes` habilitado. Añadidos cuatro tests `MainMenuTest` con `createComposeRule` (API v2). Puerta local en verde (6 unitarios, 0 fallos) y `connectedAndroidTest` en verde en `KallpaBase_API37` (18 instrumentados, 0 fallos). Spec pasa a `verificado`; queda la revisión y el PR.
 
 ## Riesgos y pendientes
 
 - **Riesgo menor:** la allowlist `./gradlew *` es amplia; conviene estrecharla tras la primera semana de uso.
 - **Sin bloqueadores técnicos:** la toolchain, el linting y el emulador ya están validados en `docs/SETUP.md`.
 - **Sin PRs abiertos:** #10, #11 y #12 están mergeados en `main`, con CI verde; no hay push pendiente.
-- **En curso:** spec 003 (F-23, navegación principal) sobre `feature/003-menu-principal`, creada desde `main` (`42bbe4d`). El destino `Clientes` se habilita porque su spec está cerrada; los demás permanecen deshabilitados.
+- **Pendiente de PR:** spec 003 (F-23, navegación principal) verificada localmente sobre `feature/003-menu-principal`, creada desde `main` (`42bbe4d`). El destino `Clientes` se habilita porque su spec está cerrada; los demás permanecen deshabilitados.
 - **Nota:** el cambio de base a `main` no dispara `pull_request`, por eso el primer CI de 001 fue `workflow_dispatch` (`45818074320`, verde sobre `5c4d4b6`). El push del commit de cierre `0e05b47` generó el run de PR `45820009036`, también en verde.
 
 ## Siguiente paso
 
-Completar la spec 003 con `/spec.plan`, `/spec.tasks`, `/spec.implement`, `/spec.verify` y `/spec.review`; abrir su PR solo tras puerta local y CI en verde, y hacer `push` únicamente con confirmación humana. Después, continuar con F-02 (listado y búsqueda de clientes).
+Commitear la spec 003, revisar el `review.md` del subagente y abrir su PR solo tras puerta local y CI en verde; hacer `push` únicamente con confirmación humana. Después, continuar con F-02 (listado y búsqueda de clientes).

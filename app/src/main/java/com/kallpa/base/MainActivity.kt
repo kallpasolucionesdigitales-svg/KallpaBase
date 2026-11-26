@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.room.Room
 import com.kallpa.base.data.RoomClientRepository
 import com.kallpa.base.data.local.KallpaDatabase
-import com.kallpa.base.ui.clients.ClientsScreen
+import com.kallpa.base.ui.MainScreen
 
 class MainActivity : ComponentActivity() {
     private lateinit var database: KallpaDatabase
@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MaterialTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    ClientsScreen(repository = repository)
+                    MainScreen(repository = repository)
                 }
             }
         }
