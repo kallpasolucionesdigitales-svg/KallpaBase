@@ -41,7 +41,7 @@ La persistencia sigue el enfoque **B por fases**: el MVP guarda los datos en el 
 | F-08 | Historial por cliente | Cartera | Ver todos los presupuestos de un cliente | Contexto al negociar | Fase 2 | pendiente | — |
 | F-09 | Generar PDF | Presupuestos | Documento exportable y listo para compartir | Entrega profesional al cliente | Fase 2 | pendiente | — |
 | F-10 | Envío por email / WhatsApp | Presupuestos | Compartir el presupuesto desde la app | Cerrar el ciclo sin salir de la aplicación | Fase 2 | pendiente | — |
-| F-11 | Persistencia local | Transversal | `Room` / `DataStore`; los datos sobreviven al cierre de la app, con capa preparada para sincronización | Confiabilidad y base para F-15 | MVP | pendiente | — |
+| F-11 | Persistencia local | Transversal | `Room` / `DataStore`; los datos sobreviven al cierre de la app, con capa preparada para sincronización | Confiabilidad y base para F-15 | MVP | verificado | `docs/specs/002-gestion-clientes/spec.md` |
 | F-12 | Notas y recordatorios | Cartera | Avisos de vencimiento de presupuestos, stock mínimo y mantenimiento | No perder oportunidades ni tareas pendientes | Idea | pendiente | — |
 | F-13 | Dashboard comercial | Reportes | Métricas: aprobados, facturación estimada, conversión y valorización de stock | Visión del negocio | Idea | pendiente | — |
 | F-14 | Exportar datos (CSV) | Reportes | Backup y portabilidad de clientes y presupuestos | Propiedad de los datos | Idea | pendiente | — |

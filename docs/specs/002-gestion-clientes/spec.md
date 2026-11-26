@@ -1,7 +1,8 @@
 # 002 — Gestión de clientes
 
-- Estado: verificado
+- Estado: cerrado
 - Rama: `feature/002-gestion-clientes`
+- PR: https://github.com/kallpasolucionesdigitales-svg/KallpaBase/pull/12
 - Fecha: 2026-11-26
 - Relación: F-01 del roadmap, con F-11 (persistencia local) como requisito no funcional.
 
