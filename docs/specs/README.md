@@ -2,6 +2,8 @@
 
 Toda funcionalidad nueva de KallpaBase se define aquí antes de implementarse. El flujo y la configuración de OpenCode están documentados en `docs/OPENCODE_SDD.md`.
 
+El inventario de funcionalidades, prioridades y decisiones de producto está en [`docs/ROADMAP.md`](../ROADMAP.md).
+
 ## Convención
 
 - ID secuencial de 3 dígitos con el nombre en `kebab-case`: `docs/specs/<NNN-slug>/`.
@@ -16,3 +18,5 @@ Toda funcionalidad nueva de KallpaBase se define aquí antes de implementarse. E
 | ID | Título | Estado | Rama | PR |
 | --- | --- | --- | --- | --- |
 | 001 | Contador Compose en MainActivity | cerrado | `feature/001-contador-compose` | [#11](https://github.com/kallpasolucionesdigitales-svg/KallpaBase/pull/11) |
+| 002 | Gestión de clientes | verificado | `feature/002-gestion-clientes` | — |
+| 003 | Menú principal | spec | `feature/003-menu-principal` | — |

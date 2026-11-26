@@ -20,17 +20,34 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.room.Room
+import com.kallpa.base.data.RoomClientRepository
+import com.kallpa.base.data.local.KallpaDatabase
+import com.kallpa.base.ui.clients.ClientsScreen
 
 class MainActivity : ComponentActivity() {
+    private lateinit var database: KallpaDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        database = Room.databaseBuilder(
+            applicationContext,
+            KallpaDatabase::class.java,
+            KallpaDatabase.DATABASE_NAME,
+        ).build()
+        val repository = RoomClientRepository(database.clientDao())
         setContent {
             MaterialTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    CounterScreen()
+                    ClientsScreen(repository = repository)
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        database.close()
+        super.onDestroy()
     }
 }
 
