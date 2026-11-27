@@ -20,3 +20,4 @@ El inventario de funcionalidades, prioridades y decisiones de producto está en 
 | 001 | Contador Compose en MainActivity | cerrado | `feature/001-contador-compose` | [#11](https://github.com/kallpasolucionesdigitales-svg/KallpaBase/pull/11) |
 | 002 | Gestión de clientes | cerrado | `feature/002-gestion-clientes` | [#12](https://github.com/kallpasolucionesdigitales-svg/KallpaBase/pull/12) |
 | 003 | Menú principal | cerrado | `feature/003-menu-principal` | [#13](https://github.com/kallpasolucionesdigitales-svg/KallpaBase/pull/13) |
+| 004 | Listado y búsqueda de clientes | verificado | `feature/004-listado-busqueda-clientes` | — |

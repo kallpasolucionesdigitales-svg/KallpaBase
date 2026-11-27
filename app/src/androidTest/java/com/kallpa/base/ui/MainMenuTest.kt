@@ -3,6 +3,7 @@ package com.kallpa.base.ui
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.click
@@ -98,9 +99,9 @@ class MainMenuTest {
 
         composeTestRule.onNodeWithContentDescription("Título, Clientes").assertIsDisplayed()
         composeTestRule
-            .onNodeWithContentDescription("Buscar, no disponible")
+            .onNodeWithContentDescription("Buscar clientes")
             .assertIsDisplayed()
-            .assertIsNotEnabled()
+            .assertIsEnabled()
         composeTestRule
             .onNodeWithContentDescription("Sincronizar, no disponible")
             .assertIsDisplayed()

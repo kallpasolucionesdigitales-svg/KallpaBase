@@ -23,5 +23,6 @@ data class ClientsUiState(
     val form: ClientFormState? = null,
     val editingId: String? = null,
     val pendingDeleteId: String? = null,
+    val detailClientId: String? = null,
     val isLoading: Boolean = true,
 )

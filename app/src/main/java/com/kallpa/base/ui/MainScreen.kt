@@ -24,7 +24,6 @@ import androidx.compose.ui.semantics.semantics
 import com.kallpa.base.data.ClientRepository
 import com.kallpa.base.ui.clients.ClientsScreen
 
-private const val SEARCH_DESCRIPTION = "Buscar, no disponible"
 private const val SYNC_DESCRIPTION = "Sincronizar, no disponible"
 private const val OVERFLOW_DESCRIPTION = "Más opciones"
 
@@ -65,10 +64,16 @@ enum class MainDestination(
 @Composable
 fun MainScreen(repository: ClientRepository, modifier: Modifier = Modifier) {
     var selectedDestination by rememberSaveable { mutableStateOf(MainDestination.CLIENTS) }
+    var searchRequest by rememberSaveable { mutableStateOf(0) }
 
     Scaffold(
         modifier = modifier,
-        topBar = { MainTopBar(title = selectedDestination.title) },
+        topBar = {
+            MainTopBar(
+                title = selectedDestination.title,
+                onSearchClick = { searchRequest++ },
+            )
+        },
         bottomBar = {
             MainNavigationBar(
                 selectedDestination = selectedDestination,
@@ -80,6 +85,7 @@ fun MainScreen(repository: ClientRepository, modifier: Modifier = Modifier) {
             MainDestination.CLIENTS -> ClientsScreen(
                 repository = repository,
                 modifier = Modifier.padding(paddingValues),
+                searchRequest = searchRequest,
             )
             MainDestination.BUDGETS,
             MainDestination.OPERATIONS,
@@ -90,7 +96,7 @@ fun MainScreen(repository: ClientRepository, modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun MainTopBar(title: String) {
+private fun MainTopBar(title: String, onSearchClick: () -> Unit) {
     var overflowExpanded by remember { mutableStateOf(false) }
 
     TopAppBar(
@@ -101,7 +107,12 @@ private fun MainTopBar(title: String) {
             )
         },
         actions = {
-            DisabledAction(label = "Buscar", description = SEARCH_DESCRIPTION)
+            TextButton(
+                onClick = onSearchClick,
+                modifier = Modifier.semantics { contentDescription = "Buscar clientes" },
+            ) {
+                Text("Buscar")
+            }
             DisabledAction(label = "Sincronizar", description = SYNC_DESCRIPTION)
             TextButton(
                 onClick = { overflowExpanded = true },
