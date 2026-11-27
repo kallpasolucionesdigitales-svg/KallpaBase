@@ -15,6 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Stable
+@Suppress("TooManyFunctions") // State holder: un evento público por acción de la UI (spec 004).
 class ClientsState internal constructor(
     private val repository: ClientRepository,
     private val scope: CoroutineScope,
@@ -109,5 +110,19 @@ class ClientsState internal constructor(
 
     fun onCancelDelete() {
         uiState = uiState.copy(pendingDeleteId = null)
+    }
+
+    fun onViewClick(id: String) {
+        uiState = uiState.copy(detailClientId = id)
+    }
+
+    fun onCloseDetail() {
+        uiState = uiState.copy(detailClientId = null)
+    }
+
+    fun onEditFromDetail() {
+        val id = uiState.detailClientId ?: return
+        uiState = uiState.copy(detailClientId = null)
+        onEditClick(id)
     }
 }

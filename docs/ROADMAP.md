@@ -32,7 +32,7 @@ La persistencia sigue el enfoque **B por fases**: el MVP guarda los datos en el 
 | ID | Funcionalidad | Módulo | Descripción | Valor | Prioridad | Estado | Spec |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | F-01 | Gestión de clientes | Cartera | Alta, edición y baja de clientes con datos de contacto | Centralizar la cartera y tener la base para los presupuestos | MVP | verificado | `docs/specs/002-gestion-clientes/spec.md` |
-| F-02 | Listado y búsqueda de clientes | Cartera | Listar, filtrar y abrir fichas de clientes | Encontrar rápido un cliente y ver su contexto | MVP | pendiente | — |
+| F-02 | Listado y búsqueda de clientes | Cartera | Listar, filtrar y abrir fichas de clientes | Encontrar rápido un cliente y ver su contexto | MVP | verificado | `docs/specs/004-listado-busqueda-clientes/spec.md` |
 | F-03 | Catálogo de productos/servicios | Presupuestos | Ítems reutilizables con descripción y precio base | No reescribir los mismos conceptos en cada presupuesto | Fase 2 | pendiente | — |
 | F-04 | Crear presupuesto | Presupuestos | Seleccionar cliente, agregar ítems, cantidades, fecha y validez | Armar presupuestos de forma rápida y consistente | MVP | pendiente | — |
 | F-05 | Cálculo de totales | Presupuestos | Subtotal, descuento, impuesto global configurable y total automáticos | Evitar errores de cálculo manual | MVP | pendiente | — |
@@ -74,12 +74,12 @@ La pantalla principal es un `Scaffold` de Material 3 con una `NavigationBar` inf
 
 | Destino | Módulo | Estado inicial | Funcionalidades asociadas |
 | --- | --- | --- | --- |
-| Clientes | Cartera | habilitado (spec 002 verificada) | F-01, F-02, F-22 |
+| Clientes | Cartera | habilitado (specs 002 y 004 verificadas) | F-01, F-02, F-22 |
 | Presupuestos | Presupuestos | deshabilitado (`Próximamente`) | F-04…F-10, F-17 |
 | Operaciones | Operaciones | deshabilitado (`Fase 2`) | F-18…F-21 |
 | Configuración | Configuración | deshabilitado (`Próximamente`) | F-16, F-17 |
 
-El `TopAppBar` muestra las acciones `Buscar` y `Sincronizar`, además de un overflow con `Reportes`, `Exportar` y `Acerca de`. Todas permanecen deshabilitadas hasta que exista la funcionalidad correspondiente.
+El `TopAppBar` muestra las acciones `Buscar` y `Sincronizar`, además de un overflow con `Reportes`, `Exportar` y `Acerca de`. `Buscar` está habilitado en el destino `Clientes` (spec 004, F-02); `Sincronizar` y el overflow permanecen deshabilitados hasta que exista la funcionalidad correspondiente.
 
 **Regla de habilitación:** un destino o acción se habilita únicamente cuando su pantalla está implementada y su spec tiene estado `verificado`. Al habilitarse, se actualizan esta tabla y el estado de la fila correspondiente del inventario.
 
@@ -110,4 +110,4 @@ Se resuelven al escribir la spec correspondiente; no bloquean el inventario.
 3. Actualizar en esta tabla la columna `Spec` con la ruta creada y el `Estado` con la fase del ciclo SDD.
 4. Continuar con `/spec.plan` → `/spec.tasks` → `/spec.implement` → `/spec.verify` + `/spec.review` → PR.
 
-Primera funcionalidad ejecutada: **F-01 Gestión de clientes** → `docs/specs/002-gestion-clientes/spec.md` (cerrada), con F-11 (persistencia local) como requisito no funcional y también verificada. **F-23 Navegación principal** → `docs/specs/003-menu-principal/spec.md` (cerrada, PR #13). Siguiente recomendada: **F-02 Listado y búsqueda de clientes** → `004-listado-busqueda-clientes`.
+Primera funcionalidad ejecutada: **F-01 Gestión de clientes** → `docs/specs/002-gestion-clientes/spec.md` (cerrada), con F-11 (persistencia local) como requisito no funcional y también verificada. **F-23 Navegación principal** → `docs/specs/003-menu-principal/spec.md` (cerrada, PR #13). **F-02 Listado y búsqueda de clientes** → `docs/specs/004-listado-busqueda-clientes/spec.md` (verificada, PR pendiente). Siguiente recomendada: **F-03 Catálogo de productos/servicios** (MVP, sin spec), previa a F-04.

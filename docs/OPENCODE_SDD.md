@@ -1,6 +1,6 @@
 # Configuración de OpenCode y Spec-Driven Development en KallpaBase
 
-> Estado: **EN CURSO** · Rama: `docs/close-spec-003` · PRs #10, #11, #12 y #13 mergeados en `main` · Última actualización: 2026-11-26
+> Estado: **EN CURSO** · Rama: `feature/004-listado-busqueda-clientes` · PRs #10 a #14 mergeados en `main` · Spec 004 verificada (PR pendiente) · Última actualización: 2026-11-27
 
 ## Objetivo
 
@@ -14,7 +14,7 @@ La base Android ya estaba lista y verde; ver `docs/SETUP.md` para el detalle del
 - Antes de esta sesión **no existían** `AGENTS.md`, `opencode.jsonc`, directorio `.opencode/` ni artefactos de especificación.
 - Se diseñó la arquitectura de agentes/subagentes y el ciclo SDD, y se creó la rama de trabajo.
 - La configuración ya está versionada: `AGENTS.md`, `opencode.jsonc`, seis comandos, la skill `spec-driven` y el índice de specs (pasos 4–8 completados).
-- Descubrimiento de agentes y comandos en la TUI **confirmado** (paso 9). La feature piloto (001), la spec 002 y sus CI están completadas; en curso la spec 003 (navegación principal).
+- Descubrimiento de agentes y comandos en la TUI **confirmado** (paso 9). Las specs 001, 002 y 003 están cerradas con CI verde; la spec 004 (listado y búsqueda de clientes) está verificada localmente y pendiente de PR.
 
 ## Decisiones tomadas
 
@@ -66,6 +66,7 @@ Ciclo de trabajo: **`/spec.new` → `/spec.plan` → `/spec.tasks` → `/spec.im
 - [x] **Paso 12** — Push de ambas ramas y PRs: #10, #11 y #12 mergeados en `main`, con CI verde en cada merge.
 - [x] **Paso 13** — Spec 002 (gestión de clientes) verificada y cerrada en el PR #12; `docs/ROADMAP.md` y el índice de specs sincronizados.
 - [x] **Paso 14** — Spec 003 (menú principal): plan → tareas → implementación → verificación → revisión → PR #13 mergeado en `main` y spec cerrada.
+- [x] **Paso 21** — Spec 004 (F-02) verificada y sincronizada en `verificado`; commit `a1c182a`, sin `push` ni PR.
 
 ## Registro de progreso
 
@@ -98,14 +99,21 @@ Ciclo de trabajo: **`/spec.new` → `/spec.plan` → `/spec.tasks` → `/spec.im
 19. Revisión de `android-reviewer`: sin bloqueantes; resueltos A-1 (commit `96c3815` con código y artefactos), M-1 (no-objetivo de la spec 003 aclarado; saneamiento de 002 quedó en `0e9e9bf`) y B-1 (CA-1 ajustado al composable raíz). Seguimiento no bloqueante: iniciales ambiguas en la barra inferior y cobertura de rotación/navegación positiva al habilitar un segundo destino.
 20. PR #13 mergeado (`0f9e5cc`); spec 003 (F-23) pasó a `cerrado` con CI verde en los jobs "Build y checks estáticos" y "Tests instrumentados (API 37)". Se actualizaron `spec.md`, `review.md`, `docs/specs/README.md`, `docs/ROADMAP.md` y este registro. La rama local `feature/003-menu-principal` se eliminó tras el merge; la remota se conserva.
 
+### 2026-11-27 — Sesión 4
+
+21. Spec 004 (F-02): T0 confirmada por el usuario (teléfonos literales, ficha de solo lectura y orden heredado sin normalizar). Implementados `SearchClientsUseCase`, estado de ficha, campo de búsqueda con `rememberSaveable`, diálogo de ficha y acción `Buscar` habilitada solo en `Clientes`; tests unitarios y tres clases instrumentadas nuevas.
+22. `android-verifier` detectó dos gaps: el CA-1 no aseveraba el orden en la UI y faltaba el cierre documental del CA-11. Se añadió la comparación de posiciones en `ClientSearchTest`, se creó `review.md`, se marcaron los CA y se pasó el índice a `verificado`. Resuelta también la supresión justificada de `TooManyFunctions` en `ClientsState` (M-1).
+23. Puerta local `BUILD SUCCESSFUL` (12 unitarios, 0 fallos; lint 0 errores) y `connectedAndroidTest` en verde en `KallpaBase_API37` (25 instrumentados, 0 fallos; regresión 002 10/10). Una corrida se colgó en el test de rotación; se reinició el AVD y la repetición terminó en 2m 20s. Quedó documentado como seguimiento no bloqueante.
+24. Commit único `a1c182a feat: add client search and detail view (spec 004)` con código, tests y artefactos. Sin `push` ni PR; la rama sigue `feature/004-listado-busqueda-clientes`. Sincronizados `docs/ROADMAP.md` (F-02 `verificado`, `Buscar` habilitado) y este registro.
+
 ## Riesgos y pendientes
 
 - **Riesgo menor:** la allowlist `./gradlew *` es amplia; conviene estrecharla tras la primera semana de uso.
 - **Sin bloqueadores técnicos:** la toolchain, el linting y el emulador ya están validados en `docs/SETUP.md`.
-- **Sin PRs abiertos:** #10, #11, #12 y #13 están mergeados en `main`, con CI verde; no hay push pendiente.
-- **Sin specs pendientes de cierre:** 001, 002 y 003 están `cerradas`. El menú principal tiene habilitado solo `Clientes`; los demás destinos permanecen deshabilitados hasta que sus specs se verifiquen.
+- **Sin PRs abiertos:** #10 a #14 están mergeados en `main`, con CI verde. El commit `a1c182a` de la spec 004 está local; push y PR pendientes.
+- **Spec 004 pendiente de cierre:** 001, 002 y 003 están `cerradas`; 004 está `verificada` y pasará a `cerrado` tras PR con CI verde. El destino `Clientes` y la acción `Buscar` están habilitados; los demás destinos y acciones permanecen deshabilitados hasta que sus specs se verifiquen.
 - **Nota:** el cambio de base a `main` no dispara `pull_request`, por eso el primer CI de 001 fue `workflow_dispatch` (`45818074320`, verde sobre `5c4d4b6`). El push del commit de cierre `0e05b47` generó el run de PR `45820009036`, también en verde.
 
 ## Siguiente paso
 
-Continuar con F-02 (listado y búsqueda de clientes): crear `feature/004-listado-busqueda-clientes` desde `main` y ejecutar `/spec.new` con el siguiente ID libre. Cualquier `push` requiere confirmación humana.
+Hacer `push` de `feature/004-listado-busqueda-clientes` y abrir el PR de la spec 004 contra `main` (con `GIT_TERMINAL_PROMPT=0` para evitar el prompt interactivo). Con CI verde, mergear, pasar la spec a `cerrado` con el enlace del PR, sincronizar F-02 y volver a `main`. Después continuar con F-03/F-04 (MVP pendientes). Cualquier `push` requiere confirmación humana.
