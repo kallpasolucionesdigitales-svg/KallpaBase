@@ -83,4 +83,4 @@ Hoy no hay forma de filtrar la cartera ni de consultar la ficha completa de un c
 - El orden heredado `ORDER BY nombre ASC` de SQLite distingue mayúsculas/minúsculas. Decidir en el plan si se normaliza; cualquier cambio obliga a actualizar CA-1.
 - La rotación se verifica con `ActivityScenario`; si el test resulta inestable, se reevaluará la estrategia en `/spec.plan` sin rebajar CA-9.
 - Habilitar `Buscar` contradice temporalmente una aserción de la spec 003; debe ajustarse `MainMenuTest` y documentarse la regresión en `review.md` para mantener el CI en verde.
-- La columna `Spec` de F-02 en `docs/ROADMAP.md` queda pendiente de sincronización: este paso crea solo la spec y su fila en el índice, sin tocar otros archivos.
+- La columna `Spec` de F-02 en `docs/ROADMAP.md` se sincronizó al verificar esta spec (estado `verificado`, `Buscar` habilitado); el paso a `cerrado` y el enlace del PR quedan supeditados al merge con CI verde, según `review.md`.
